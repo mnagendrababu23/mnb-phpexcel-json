@@ -9,8 +9,13 @@ use Mnb\PHPExcel\Support\ErrorCode;
 use Mnb\PHPExcel\Support\JsonArrayNormalizer;
 use Mnb\PHPExcel\Support\MnbExcelException;
 
-final class JsonReader implements IterableReaderInterface
+final class JsonReader implements IterableReaderInterface, FormatAwareReaderInterface, SheetNamesReaderInterface
 {
+    public function format(): string
+    {
+        return 'json';
+    }
+
     /** @return list<list<mixed>> */
     public function readSheet(string $path, int|string $sheet = 1, array $options = []): array
     {
